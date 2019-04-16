@@ -67,8 +67,8 @@ class Geo extends EloquentTreeItem {
 
         return $query->where(function($query) use($search)
         {
-            $query->whereRaw('LOWER(alternames) LIKE ?', [$search])
-                ->orWhereRaw('LOWER(name) LIKE ?', [$search]);
+            $query->where('alternames','like', $search)
+                ->orWhere('name','like', $search);
         });
 
     }
